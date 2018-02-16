@@ -1,0 +1,22 @@
+{
+  "private": true,
+  "name": "stripchat-embedded",
+  "version": "1.0.0",
+  "description": "Stripchat JS scripts for embedding on other sites",
+  "main": "dist/index.js",
+  "scripts": {
+    "buildDev": "NODE_ENV=development rollup src/index.js --config --sourcemap --output dist/index.js",
+    "build": "NODE_ENV=production rollup src/index.js --config --sourcemap --output dist/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "ssh://git@git.stripdev.com:7999/~artysunrise/stripchat-embedded.git"
+  },
+  "author": "",
+  "devDependencies": {
+    "rollup": "0.56.1",
+    "rollup-plugin-commonjs": "8.3.0",
+    "rollup-plugin-uglify": "3.0.0"
+  }
+}
