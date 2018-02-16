@@ -32,3 +32,7 @@ player = (new StripchatPlayer())
   .setModelSnapshotServer(modelSnapshotServer)
   .mount();
 ```
+
+## TODO
+
+* tests
