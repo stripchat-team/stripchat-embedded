@@ -1,5 +1,5 @@
 {
-  "name": "stripchat-embedded",
+  "name": "@stripchat/stripchat-embedded",
   "version": "1.0.0",
   "description": "Stripchat JS scripts for embedding on other sites",
   "main": "dist/index.js",
@@ -16,5 +16,15 @@
     "rollup": "0.56.1",
     "rollup-plugin-commonjs": "8.3.0",
     "rollup-plugin-uglify": "3.0.0"
-  }
+  },
+  "dependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/stripchat-team/stripchat-embedded.git"
+  },
+  "author": "",
+  "bugs": {
+    "url": "https://github.com/stripchat-team/stripchat-embedded/issues"
+  },
+  "homepage": "https://github.com/stripchat-team/stripchat-embedded#readme"
 }
