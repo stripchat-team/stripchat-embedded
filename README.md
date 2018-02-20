@@ -17,7 +17,7 @@ npm install @stripchat/stripchat-embedded
 ### Stripchat player code example
 
 ```js
-import { StripchatPlayer } from 'stripchat-embedded';
+import { StripchatPlayer } from '@stripchat/stripchat-embedded';
 
 var canvasRef = document.getElementById('canvas');
 var modelId = 1; // put real model id
