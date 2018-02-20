@@ -1,4 +1,4 @@
-var player = require('./player');
+const player = require('./player');
 
 module.exports = {
   StripchatPlayer: player,

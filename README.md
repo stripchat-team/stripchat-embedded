@@ -9,7 +9,7 @@ Stripchat JS scripts for embedding on sites.
 ## Install
 
 ```shell
-TODO: right link: npm install git+ssh://git@git.stripdev.com:7999/~artysunrise/stripchat-embedded.git
+npm install stripchat-embedded
 ```
 
 ## Use
@@ -20,9 +20,9 @@ TODO: right link: npm install git+ssh://git@git.stripdev.com:7999/~artysunrise/s
 import { StripchatPlayer } from 'stripchat-embedded';
 
 var canvasRef = document.getElementById('canvas');
-var modelId = 1;
-var modelToken = 'modelToken';
-var modelSnapshotServer = 'modelSnapshotServer';
+var modelId = 1; // put real model id
+var modelToken = 'modelToken'; // put real model token
+var modelSnapshotServer = 'modelSnapshotServer'; // put real model snapshot server
 var player;
 
 player = (new StripchatPlayer())
