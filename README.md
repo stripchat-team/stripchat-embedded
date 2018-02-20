@@ -9,7 +9,7 @@ Stripchat JS scripts for embedding on sites.
 ## Install
 
 ```shell
-npm install stripchat-embedded
+npm install @stripchat/stripchat-embedded
 ```
 
 ## Use
