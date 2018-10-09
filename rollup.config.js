@@ -4,8 +4,11 @@ import { uglify } from 'rollup-plugin-uglify';
 var env = process.env.NODE_ENV;
 
 var config = {
-  format: 'umd',
-  moduleName: 'StripchatEmbedded',
+  output: {
+    format: 'umd',
+    name: 'StripchatEmbedded',
+    exports: 'named'
+  },
   plugins: [
     commonjs(),
   ]

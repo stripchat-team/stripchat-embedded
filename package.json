@@ -6,8 +6,8 @@
   "scripts": {
     "clean": "rimraf dist",
     "prepare": "npm run clean && npm run build",
-    "buildDev": "NODE_ENV=development rollup src/index.js --config --sourcemap --output dist/index.js",
-    "build": "NODE_ENV=production rollup src/index.js --config --sourcemap --output dist/index.js",
+    "buildDev": "NODE_ENV=development rollup src/index.js --config --sourcemap --file dist/index.js",
+    "build": "NODE_ENV=production rollup src/index.js --config --sourcemap --file dist/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "license": "ISC",
