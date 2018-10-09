@@ -1,5 +1,5 @@
 import commonjs from 'rollup-plugin-commonjs';
-import uglify from 'rollup-plugin-uglify';
+import { uglify } from 'rollup-plugin-uglify';
 
 var env = process.env.NODE_ENV;
 

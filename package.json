@@ -13,9 +13,9 @@
   "license": "ISC",
   "devDependencies": {
     "rimraf": "2.6.2",
-    "rollup": "0.56.1",
-    "rollup-plugin-commonjs": "8.3.0",
-    "rollup-plugin-uglify": "3.0.0"
+    "rollup": "0.66.5",
+    "rollup-plugin-commonjs": "9.1.8",
+    "rollup-plugin-uglify": "6.0.0"
   },
   "dependencies": {},
   "repository": {
