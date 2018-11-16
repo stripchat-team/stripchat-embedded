@@ -126,14 +126,33 @@ function streamImageUrl(modelId, snapshotServer, modelToken, isNewSnapshotUrl) {
   return protocol + '://c-' + snapshotServer + '.stripcdn.com/snapshot/' + modelId + queryString;
 }
 
+function getIsNewSnapshotUrl() {
+  // get query params object
+  var qs = (function(a) {
+    if (a == "") return {};
+    var b = {};
+    for (var i = 0; i < a.length; ++i) {
+      var p = a[i].split('=', 2);
+      if (p.length == 1)
+        b[p[0]] = "";
+      else
+        b[p[0]] = decodeURIComponent(p[1].replace(/\+/g, " "));
+    }
+    return b;
+  })(window.location.search.substr(1).split('&'));
+
+  return qs.player === 'cached';
+}
+
 function enqueueImage() {
   if (!this.loader.queue) {
     return;
   }
 
   var streamImage = this.loader.queue.shift();
+  var isNewSnapshotUrl = getIsNewSnapshotUrl(); 
 
-  streamImage.src = streamImageUrl(this.modelId, this.snapshotServer, this.modelToken, this.isNewSnapshotUrl);
+  streamImage.src = streamImageUrl(this.modelId, this.snapshotServer, this.modelToken, isNewSnapshotUrl);
   streamImage.queueIndex = this.loader.lastQueuedIndex;
 
   this.loader.lastQueuedIndex += 1;
@@ -147,8 +166,6 @@ function Player() {
   this.modelId = '';
   this.modelToken = '';
   this.snapshotServer = '';
-
-  this.isNewSnapshotUrl = false;
 
   this.successHandler = function () {};
   this.errorHandler = function () {};
@@ -183,12 +200,6 @@ Player.prototype.setModelToken = function (modelToken) {
 
 Player.prototype.setModelSnapshotServer = function (snapshotServer) {
   this.snapshotServer = snapshotServer.toString();
-
-  return this;
-};
-
-Player.prototype.setIsNewSnapshotUrl = function (isNew) {
-  this.isNewSnapshotUrl = isNew || true;
 
   return this;
 };
