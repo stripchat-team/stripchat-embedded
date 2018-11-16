@@ -112,12 +112,18 @@ function cropCanvas(streamImage, containerSize) {
   };
 }
 
-function streamImageUrl(modelId, snapshotServer, modelToken) {
+function streamImageUrl(modelId, snapshotServer, modelToken, isNewSnapshotUrl) {
   var protocol = location.protocol === 'http:'
     ? 'http'
     : 'https';
 
-  return protocol + '://c-' + snapshotServer + '.stripcdn.com/snapshot/' + modelId + '?token=' + modelToken + '&_=' + (new Date()).valueOf();
+  var queryString = '?token=' + modelToken + '&_=' + (new Date()).valueOf();
+
+  if (isNewSnapshotUrl) {
+    return protocol + '://img-eu.stripcdn.com/' + snapshotServer + '/snapshot/' + modelId + queryString;
+  }
+
+  return protocol + '://c-' + snapshotServer + '.stripcdn.com/snapshot/' + modelId + queryString;
 }
 
 function enqueueImage() {
@@ -127,7 +133,7 @@ function enqueueImage() {
 
   var streamImage = this.loader.queue.shift();
 
-  streamImage.src = streamImageUrl(this.modelId, this.snapshotServer, this.modelToken);
+  streamImage.src = streamImageUrl(this.modelId, this.snapshotServer, this.modelToken, this.isNewSnapshotUrl);
   streamImage.queueIndex = this.loader.lastQueuedIndex;
 
   this.loader.lastQueuedIndex += 1;
@@ -141,6 +147,8 @@ function Player() {
   this.modelId = '';
   this.modelToken = '';
   this.snapshotServer = '';
+
+  this.isNewSnapshotUrl = false;
 
   this.successHandler = function () {};
   this.errorHandler = function () {};
@@ -175,6 +183,12 @@ Player.prototype.setModelToken = function (modelToken) {
 
 Player.prototype.setModelSnapshotServer = function (snapshotServer) {
   this.snapshotServer = snapshotServer.toString();
+
+  return this;
+};
+
+Player.prototype.setIsNewSnapshotUrl = function (isNew) {
+  this.isNewSnapshotUrl = isNew || true;
 
   return this;
 };
