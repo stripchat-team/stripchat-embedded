@@ -127,7 +127,7 @@ function streamImageUrl(modelId, snapshotServer, modelToken, isNewSnapshotUrl) {
 }
 
 function getIsNewSnapshotUrl() {
-  var distribution = 30; // 30% of chance
+  var distribution = 40; // 40% of chance
   var isChanceRealized = (Math.random() * 100) < distribution;
 
   return isChanceRealized;
