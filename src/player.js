@@ -120,14 +120,14 @@ function streamImageUrl(modelId, snapshotServer, modelToken, isNewSnapshotUrl) {
   var queryString = '?token=' + modelToken + '&_=' + (new Date()).valueOf();
 
   if (isNewSnapshotUrl) {
-    return protocol + '://img-eu.stripcdn.com/' + snapshotServer + '/snapshot/' + modelId + queryString;
+    return protocol + '://sp.stripcdn.com/' + snapshotServer + '/snapshot/' + modelId + queryString;
   }
 
   return protocol + '://c-' + snapshotServer + '.stripcdn.com/snapshot/' + modelId + queryString;
 }
 
 function getIsNewSnapshotUrl() {
-  var distribution = 1; // 1% of chance
+  var distribution = 10; // 10% of chance
   var isChanceRealized = (Math.random() * 100) < distribution;
 
   return isChanceRealized;
