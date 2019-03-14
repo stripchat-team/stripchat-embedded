@@ -123,11 +123,11 @@ function streamImageUrl(modelId, snapshotServer, modelToken, isNewSnapshotUrl) {
     return protocol + '://sp.stripcdn.com/' + snapshotServer + '/snapshot/' + modelId + queryString;
   }
 
-  return protocol + '://c-' + snapshotServer + '.stripcdn.com/snapshot/' + modelId + queryString;
+  return protocol + '://c-' + snapshotServer + '.stripst.com/snapshot/' + modelId + queryString;
 }
 
 function getIsNewSnapshotUrl() {
-  var distribution = 40; // 40% of chance
+  var distribution = 30; // 30% of chance
   var isChanceRealized = (Math.random() * 100) < distribution;
 
   return isChanceRealized;
