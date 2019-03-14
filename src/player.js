@@ -117,7 +117,7 @@ function streamImageUrl(modelId, snapshotServer, modelToken) {
     ? 'http'
     : 'https';
 
-  return protocol + '://c-' + snapshotServer + '.stripcdn.com/snapshot/' + modelId + '?token=' + modelToken + '&_=' + (new Date()).valueOf();
+  return protocol + '://c-' + snapshotServer + '.stripst.com/snapshot/' + modelId + '?token=' + modelToken + '&_=' + (new Date()).valueOf();
 }
 
 function enqueueImage() {
