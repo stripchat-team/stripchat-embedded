@@ -33,6 +33,9 @@ player = (new StripchatPlayer())
   .mount();
 ```
 
+### Stripchat player with widget API example page
+See ```example.html```
+
 ## TODO
 
 * tests

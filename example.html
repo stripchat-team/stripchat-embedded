@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <div>
+    <canvas style="width: 500px; height: 375px" id="canvas"></canvas>
+  </div>
+
+  <script>
+    function onBundleScriptErrorHandler() {
+      alert('./dist/index.js file is not found locally, run `npm install && npm run build`');
+    }
+  </script>
+
+  <script src="./dist/index.js" onError="onBundleScriptErrorHandler()"></script>
+
+  <script>
+    const { StripchatPlayer } = StripchatEmbedded;
+
+    function getRandomItemFromArray(array) {
+      const randomIndex = Math.floor(Math.random() * array.length);
+      return array[randomIndex];
+    }
+
+    function getRandomOnlineModel() {
+      return window.fetch('https://stripchat.com/api/external/v4/widget')
+        .then(response => response.json())
+        .then(({ models }) => getRandomItemFromArray(models));
+    }
+
+    function initPlayer(canvasRef, model) {
+      new StripchatPlayer()
+        .setCanvasRef(canvasRef)
+        .setModelId(model.id)
+        .setModelToken(model.token)
+        .setModelSnapshotServer(model.snapshotServer)
+        .mount();
+    }
+
+    const canvasRef = document.getElementById('canvas');
+
+    getRandomOnlineModel().then((model) => {
+      initPlayer(canvasRef, model);
+    });
+  </script>
+</body>
+</html>
