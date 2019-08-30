@@ -1,6 +1,8 @@
 function onImageLoaded(streamImage) {
   // Skip drawing image if it was loaded later than previous one drawn or was not loaded at all
-  if (streamImage.src === ''
+  if (
+    !streamImage
+    || streamImage.src === ''
     || streamImage.queueIndex < this.loader.lastDrawnIndex
   ) {
     console.info('Stripchat Player :: Skip of successfully loaded image');
@@ -15,6 +17,7 @@ function onImageLoaded(streamImage) {
   this.loader.lastDrawnIndex = streamImage.queueIndex;
 
   if (this.successHandler(streamImage) === false) {
+
     return;
   }
 
@@ -57,8 +60,6 @@ function onImageError(streamImage) {
   }
 
   console.warn('Stripchat Player :: Image loading error');
-
-  this.unmount();
 
   this.errorHandler(streamImage);
 }
@@ -249,7 +250,12 @@ Player.prototype.initQueue = function () {
 Player.prototype.initInterval = function () {
   this.loader.intervalTimer = function() {
     if (!this.paused) {
-      enqueueImage.call(this);
+      try {
+        enqueueImage.call(this);
+      } catch (e) {
+        console.log(e);
+        ;
+      }
     }
 
     this.loader.interval = setTimeout(
@@ -281,24 +287,6 @@ Player.prototype.mount = function () {
   this.init();
 
   this.loader.intervalTimer();
-
-  return this;
-};
-
-Player.prototype.unmount = function () {
-  if (this.loader.queue) {
-    this.loader.queue.forEach(function (element, index, queue) {
-      queue[index].src = '';
-      queue[index].removeEventListener('load', queue[index].onLoadListener);
-    });
-
-    if (this.loader.interval !== null) {
-      clearTimeout(this.loader.interval);
-      this.loader = {};
-    }
-  }
-
-  this.loader = {};
 
   return this;
 };
