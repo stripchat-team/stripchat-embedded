@@ -1,6 +1,6 @@
 {
   "name": "@stripchat/stripchat-embedded",
-  "version": "1.1.0-beta.2",
+  "version": "1.1.0-beta.3",
   "description": "Stripchat JS scripts for embedding on other sites",
   "main": "dist/index.js",
   "scripts": {
